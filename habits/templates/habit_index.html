@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Habits</h1>
+<div class="row">
+{% for habit in habit.ha %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ habit.title }}</h5>
+                <!-- <p class="card-text">{{ habit.description }}</p> -->
+                <p class="card-text"> {{ habitResponses.all }} </p>
+                <a href="{% url 'habit_detail' habit.pk %}"
+                class="btn btn-primary">
+                    View Progress
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">ADD HABIT</h5>
+            <p class="card-text">Click to add habit</p>
+            <a href=""
+            class="btn btn-primary">
+                Add Habit
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
