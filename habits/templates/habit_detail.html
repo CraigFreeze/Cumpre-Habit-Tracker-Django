@@ -1,19 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block javascript %}
+<script>
+    function cycleColor(id, cycle){
+        if(cycle === 'N'){
+            document.getElementById(id).style.backgroundColor = '#228B22'; //forest green
+            cycle++;
+        } else if (cycle === 'G'){
+            document.getElementById(id).style.backgroundColor = '#ee3818'; //red
+            cycle++;
+        } else {
+            document.getElementById(id).style.backgroundColor = '#c0c0c0'; //silver
+            cycle = 0;
+        }
+    }
+</script>
+{% endblock %}
+
 {% block page_content %}
+<style>
+    .response {
+        width: 14.2857%;
+        *width: 14.2857%; 
+        background-color: #c0c0c0;
+    }
+</style>
+
 <h1>{{ habit.title }}</h1>
-<div class="row">
-    <div class="col-md-8">
-        <img src="{% static habit.image %}" alt="" width="100%">
-    </div>
-    <div class="col-md-4">
-        <h5>About the habit:</h5>
-        <p>{{ habit.description }}</p>
-        <br>
-        <h5>Technology used:</h5>
-        <p>{{ habit.technology }}</p>
-    </div>
+<div class="col-md-12">
+    <h5>About the habit:</h5>
+    <p>{{ habit.description }}</p>
+    <br>
 </div>
 
+<div class="border row">
+    <div class="border col text-center"> Day 1 </div>
+    <div class="border col text-center"> Day 2 </div>
+    <div class="border col text-center"> Day 3 </div>
+    <div class="border col text-center"> Day 4 </div>
+    <div class="border col text-center"> Day 5 </div>
+    <div class="border col text-center"> Day 6 </div>
+    <div class="border col text-center"> Day 7 </div>
+</div>
+<div class="row">
+    {% for form in forms %}
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" id= "{{ form.response_id|safeseq }}" > 
+            {{ form.response_char.value }}
+        </button>
+    </form>
+    {% endfor %}
+</div>
 {% endblock %}
+
+

@@ -3,13 +3,12 @@
 {% block page_content %}
 <h1>Habits</h1>
 <div class="row">
-{% for habit in habit.ha %}
+{% for habit in habits %}
     <div class="col-md-4">
         <div class="card mb-2">
             <div class="card-body">
                 <h5 class="card-title">{{ habit.title }}</h5>
-                <!-- <p class="card-text">{{ habit.description }}</p> -->
-                <p class="card-text"> {{ habitResponses.all }} </p>
+                <p class="card-text">{{ habit.description }}</p>
                 <a href="{% url 'habit_detail' habit.pk %}"
                 class="btn btn-primary">
                     View Progress
