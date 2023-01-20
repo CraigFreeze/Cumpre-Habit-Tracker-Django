@@ -20,10 +20,24 @@
 
 {% block page_content %}
 <style>
+    /* form, button {
+        all: unset;
+    } */
     .response {
+        all: unset;
         width: 14.2857%;
-        *width: 14.2857%; 
-        background-color: #c0c0c0;
+        *width: 14.2857%;
+        /* height: 10vw; */
+        background-color: #000000;
+    }
+    .N {
+        background-color: #a6a6a6;
+    }
+    .G {
+        background-color: #26c269;
+    }
+    .R {
+        background-color: #ff0000;
     }
 </style>
 
@@ -45,10 +59,10 @@
 </div>
 <div class="row">
     {% for form in forms %}
-    <form action="" method="POST" >
+    <form action="" method="POST" class = "col response">
         {% csrf_token %}
         {{ form }}
-        <button type="submit" id= "{{ form.response_id|safeseq }}" > 
+        <button class="col {{ form.response_char.value }}" type="submit" id= "{{ form.response_id|safeseq }}" style="height: 10vw"> 
             {{ form.response_char.value }}
         </button>
     </form>

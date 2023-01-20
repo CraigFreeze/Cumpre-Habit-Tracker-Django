@@ -15,9 +15,10 @@ def habit_detail(request, pk):
 
     if request.method == 'POST':
         form = DayTrackerForm(request.POST)
-        #Todo: hide the hidden field on the form // FIX CSS styling on form // 
-        #Todo: update color styling based on response char
-        #Todo: provide the default value for the response_id in the form. (populate the hidden form for the user)
+        #// Todo: hide the hidden field on the form 
+        # Todo: FIX CSS styling on form // 
+        # Todo: update color styling based on response char
+        #// Todo: provide the default value for the response_id in the form. (populate the hidden form for the user)
         #? get vs post in line 16 ?
         #? learn how to make a branch and start saving to it (consider saving things straight to the main branch)?
         #Cycles through characters and updates database
