@@ -7,24 +7,48 @@
     <div class="col-md-4">
         <div class="card mb-2">
             <div class="card-body">
-                <h5 class="card-title">{{ habit.title }}</h5>
-                <p class="card-text">{{ habit.description }}</p>
-                <a href="{% url 'habit_detail' habit.pk %}"
-                class="btn btn-primary">
-                    View Progress
-                </a>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h5 class="card-title">{{ habit.title }} {{ habit.id }}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="delete" style="float: right;" value="{{ habit.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text" style="margin-bottom:10pt">{{ habit.description }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="{% url 'habit_detail' habit.pk %}"
+                        class="btn btn-primary">
+                            View Progress
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     {% endfor %}
-    <div class="card mb-2">
-        <div class="card-body">
-            <h5 class="card-title">ADD HABIT</h5>
-            <p class="card-text">Click to add habit</p>
-            <a href=""
-            class="btn btn-primary">
-                Add Habit
-            </a>
+    <div class = "col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">ADD HABIT</h5>
+                <p class="card-text">Click to add habit</p>
+                <a href="{% url 'habit_create' %}"
+                class="btn btn-primary">
+                    Add Habit
+                </a>
+            </div>
         </div>
     </div>
 </div>

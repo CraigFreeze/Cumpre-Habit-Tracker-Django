@@ -9,3 +9,8 @@ class HabitResponse(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
     response_char = models.CharField(max_length=1) # G - Green // N - Neither // R - Red
     report_day = models.DateTimeField()
+
+class Report(models.Model):
+    habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
+    entry = models.CharField(max_length=10000) # G - Green // N - Neither // R - Red
+    report_day = models.DateTimeField()

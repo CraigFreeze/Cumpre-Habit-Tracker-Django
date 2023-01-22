@@ -2,20 +2,6 @@
 {% load static %}
 
 {% block javascript %}
-<script>
-    function cycleColor(id, cycle){
-        if(cycle === 'N'){
-            document.getElementById(id).style.backgroundColor = '#228B22'; //forest green
-            cycle++;
-        } else if (cycle === 'G'){
-            document.getElementById(id).style.backgroundColor = '#ee3818'; //red
-            cycle++;
-        } else {
-            document.getElementById(id).style.backgroundColor = '#c0c0c0'; //silver
-            cycle = 0;
-        }
-    }
-</script>
 {% endblock %}
 
 {% block page_content %}
@@ -62,11 +48,14 @@
     <form action="" method="POST" class = "col response">
         {% csrf_token %}
         {{ form }}
-        <button class="col {{ form.response_char.value }}" type="submit" id= "{{ form.response_id|safeseq }}" style="height: 10vw"> 
-            {{ form.response_char.value }}
-        </button>
+        <button class="col {{ form.response_char.value }}" name="submitResponse" type="submit" id= "{{ form.response_id|safeseq }}" style="height: 10vw"></button>
     </form>
     {% endfor %}
+    <form action="" method="POST" class = "col response">
+        {% csrf_token %}
+        {{ form }}
+        <button class="col {{ form.response_char.value }}" name="createResponse" type="submit" id= "{{ form.response_id|safeseq }}" style="height: 10vw"></button>
+    </form>
 </div>
 {% endblock %}
 

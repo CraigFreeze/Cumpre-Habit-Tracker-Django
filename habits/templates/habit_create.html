@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block page_content %}
+<h1>Create Habit</h1>
+
+<style>
+    .description {
+        min-height: 40vw;
+        overflow-wrap: "true";
+    }
+</style>
+    <form action="" method="POST">
+        {% csrf_token %} 
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          {{ form.title }}
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          {{ form.description }}
+        </div>
+        <button value = "submit" type="submit">
+            Submit</button>
+    </form>
+
+{% endblock %}

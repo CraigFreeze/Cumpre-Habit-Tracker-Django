@@ -1,14 +1,21 @@
 from django import forms
-from habits.models import Habit, HabitResponse
+
+class DeleteHabitForm(forms.Form):
+    pass
 
 class DayTrackerForm(forms.Form):
     response_id = forms.CharField(
-        widget=forms.HiddenInput()
+        widget= forms.HiddenInput()
     )
     response_char = forms.CharField(
-        widget=forms.HiddenInput()
+        widget= forms.HiddenInput()
     )
 
-class HabitResponseForm(forms.Form):
-    response_char = forms.CharField(max_length=1) # G - Green // N - Neither // R - Red
-    #report_day = models.DateTimeField()
+class CreateHabitForm(forms.Form):
+    title = forms.CharField(label='Title')
+    description = forms.CharField(label='Description', widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+class CreateHabitResponseForm(forms.Form):
+    report_day = forms.DateField(
+        # widget= forms.HiddenInput()
+    )
