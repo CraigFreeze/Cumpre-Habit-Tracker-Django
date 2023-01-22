@@ -1,8 +1,10 @@
 from django import forms
 
-class DeleteHabitForm(forms.Form):
-    pass
+class JournalHabitForm(forms.Form):
+    title = forms.CharField(label='Title')
+    entry = forms.CharField(label='Entry', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
+# Form that handles the habit responses.
 class DayTrackerForm(forms.Form):
     response_id = forms.CharField(
         widget= forms.HiddenInput()

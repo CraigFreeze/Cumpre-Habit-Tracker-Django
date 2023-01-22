@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block page_content %}
+<h1>New Journal Entry</h1>
+
+<style>
+    .description {
+        min-height: 40vw;
+        overflow-wrap: "true";
+    }
+</style>
+
+<form action="" method="POST">
+    {% csrf_token %} 
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Title</label>
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Entry</label>
+        {{ form.entry }}
+    </div>
+    <button value = "submit" type="submit" name="publish_entry" class="btn btn-primary">
+        Publish</button>
+</form>
+
+{% for entry in journalEntries %}
+<div class="card">
+    <h5 class="card-header">{{ entry.report_date }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{ entry.title }}</h5>
+        <p class="card-text">{{ entry.entry }}</p>
+            <form action="" method="POST">
+                {% csrf_token %} 
+                <button type="submit" class="btn btn-danger" style="float:right" name="delete_entry" value="{{ entry.id }}">Delete</button>
+            </form>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

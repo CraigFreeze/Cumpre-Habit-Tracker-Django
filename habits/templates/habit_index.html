@@ -2,6 +2,7 @@
 {% load static %}
 {% block page_content %}
 <h1>Habits</h1>
+
 <div class="row">
 {% for habit in habits %}
     <div class="col-md-4">
@@ -9,7 +10,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
-                        <h5 class="card-title">{{ habit.title }} {{ habit.id }}</h5>
+                        <h5 class="card-title">{{ habit.title }}</h5>
                     </div>
                     <div class="col-md-2">
                         <form action="" method="POST">
@@ -45,11 +46,11 @@
                 <h5 class="card-title">ADD HABIT</h5>
                 <p class="card-text">Click to add habit</p>
                 <a href="{% url 'habit_create' %}"
-                class="btn btn-primary">
+                class="btn btn-success">
                     Add Habit
                 </a>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %} 

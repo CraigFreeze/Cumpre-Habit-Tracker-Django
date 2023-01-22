@@ -55,7 +55,7 @@
         {% csrf_token %}
         {{ form }}
         <button class="col {{ form.response_char.value }}" name="createResponse" type="submit" id= "{{ form.response_id|safeseq }}" style="height: 10vw"></button>
-    </form>
+    </form> 
 </div>
 {% endblock %}
 
